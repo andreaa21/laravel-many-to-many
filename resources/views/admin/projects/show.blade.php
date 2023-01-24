@@ -3,11 +3,18 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col card mt-5">
-                <h5 class="card-title my-2">Titolo del progetto: {{ $project->name }}</h5>
-                <h5 class="card-title my-2">Nome cliente: {{ $project->client_name }}</h5>
+            <div class="col mt-5">
+                <h5 class="my-2">Titolo del progetto: {{ $project->name }}</h5>
+                <h5 class="my-2">Nome cliente: {{ $project->client_name }}</h5>
                 @if ($project->category)
-                    <h5 class="card-title my-2">Categoria: {{ $project->category->name }}</h5>
+                    <h5 class="my-2">Categoria: {{ $project->category->name }}</h5>
+                @endif
+                @if ($project->technologies)
+                    @foreach ($project->technologies as $technology)
+                        <span class="badge text-bg-danger">
+                            {{ $technology->name }}
+                        </span>
+                    @endforeach
                 @endif
                 <h5 class="card-title my-2">Descrizione: {{ $project->summary }}</h5>
 
