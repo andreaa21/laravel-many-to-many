@@ -11,11 +11,16 @@ class Project extends Model
     use HasFactory;
 
 
-    protected $fillable = ['name', 'client_name', 'summary', 'cover_image', 'slug', 'cover_image', 'cover_image_original_name'];
+    protected $fillable = ['name', 'client_name', 'summary', 'cover_image', 'slug', 'cover_image', 'cover_image_original_name', 'category_id'];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function technologies()
+    {
+        return $this->belongsToMany(Technology::class);
     }
 
     public static function generateSlug($string)
