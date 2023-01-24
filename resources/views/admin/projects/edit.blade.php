@@ -29,6 +29,14 @@
                 </select>
             </div>
             <div class="mb-3">
+                <p for="" class="form-label">Tecnologie</p>
+                @foreach ($technologies as $technology)
+                    <input id="{{ $loop->iteration }}" class="mx-1" name="technologies[]" value="{{ $technology->id }}"
+                        @if ($project->technologies->contains($technology)) checked @endif type="checkbox">
+                    <label for="{{ $loop->iteration }}">{{ $technology->name }}</label>
+                @endforeach
+            </div>
+            <div class="mb-3">
                 <label for="cover_image" class="form-label">immagine</label>
                 <input type="file" class="form-control" id="cover_umage" name="cover_image"
                     value="{{ old('cover_image', $project->cover_image) }}" placeholder="immagine">

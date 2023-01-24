@@ -30,7 +30,7 @@
                 <p for="" class="form-label">Tecnologie</p>
                 @foreach ($technologies as $technology)
                     <input id="{{ $loop->iteration }}" class="mx-1" name="technologies[]" value="{{ $technology->id }}"
-                        type="checkbox">
+                        @if (in_array($technology->id, old('technologies', []))) checked @endif type="checkbox">
                     <label for="{{ $loop->iteration }}">{{ $technology->name }}</label>
                 @endforeach
             </div>
