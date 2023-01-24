@@ -14,6 +14,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Titolo</th>
                             <th scope="col">Nome cliente</th>
+                            <th scope="col">Tecnologia</th>
                             <th scope="col">Descrizione</th>
                             <th scope="col">Azioni</th>
                         </tr>
@@ -25,6 +26,15 @@
                                 <td width="15%">{{ $project->name }} <span
                                         class="badge text-bg-info ms-3">{{ $project->category->name }}</span></td>
                                 <td>{{ $project->client_name }}</td>
+                                <td>
+                                    @forelse ($project->technologies as $technology)
+                                        <span class="badge text-bg-danger">
+                                            {{ $technology->name }}
+                                        </span>
+                                    @empty
+                                        --no data--
+                                    @endforelse
+                                </td>
                                 <td>{{ $project->summary }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-primary mx-1"
