@@ -17,7 +17,7 @@
                     value="{{ old('client_name') }}" placeholder="Nome Cliente">
             </div>
             <div class="mb-3">
-                <label for="client_name" class="form-label">Categorie</label>
+                <label for="" class="form-label">Categorie</label>
                 <select class="form-select" name="category_id" aria-label="Default select example">
                     <option value="" selected>Selezionare una categoria</option>
                     @foreach ($categories as $category)
@@ -25,6 +25,14 @@
                             {{ $category->name }}</option>
                     @endforeach
                 </select>
+            </div>
+            <div class="mb-3">
+                <p for="" class="form-label">Tecnologie</p>
+                @foreach ($technologies as $technology)
+                    <input id="{{ $loop->iteration }}" class="mx-1" name="technologies[]" value="{{ $technology->id }}"
+                        type="checkbox">
+                    <label for="{{ $loop->iteration }}">{{ $technology->name }}</label>
+                @endforeach
             </div>
             <div class="mb-3">
                 <label for="cover_image" class="form-label">immagine</label>
